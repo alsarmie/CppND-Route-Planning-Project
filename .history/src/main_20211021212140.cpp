@@ -32,14 +32,11 @@ void CheckinputValues(const float &start_x, const float &start_y,
   /* This function checks that the input coordinates provided by the user are
    * acceptable */
 
-  assert((start_x >= 0 && start_x <= 100) &&
-         "The start X coordinate is not positive or out of range (>100)!");
-  assert((start_y >= 0 && start_y <= 100) &&
-         "The start Y coordinate is not positive or out of range (>100)!");
-  assert((end_x >= 0 && end_x <= 100) &&
-         "The goal X coordinate is not positive or out of range (>100)!");
-  assert((end_y >= 0 && end_y <= 100) &&
-         "The goal Y coordinate is not positive or out of range (>100)!");
+  assert((start_x >= 0 && start_x <= 100) &&"The start X coordinate is not positive or out of range (>100)");
+   (start_y >= 0 && start_y <= 100) &&
+
+         (end_x >= 0 && end_x <= 100) && 
+         (end_y >= 0 && end_y <= 100));
 
   std::cout << "Coordinates are acceptable, proceeding with route planning."
             << std::endl;
@@ -61,7 +58,7 @@ void GetInputValues(float &start_x, float &start_y, float &end_x,
   std::cin >> end_x;
   std::cout << "Goal y: ";
   std::cin >> end_y;
-  // Check that the input is correct.
+  // Check that input is correct.
   CheckinputValues(start_x, start_y, end_x, end_y);
 }
 
@@ -95,7 +92,6 @@ int main(int argc, const char **argv) {
   // RoutePlanner object below in place of 10, 10, 90, 90.
   float start_x{0.f}, start_y{0.f}, end_x{0.f}, end_y{0.f};
 
-  GetInputValues(start_x, start_y, end_x, end_y);
   // Build Model.
   RouteModel model{osm_data};
 

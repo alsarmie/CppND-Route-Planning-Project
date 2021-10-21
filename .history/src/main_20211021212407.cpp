@@ -61,7 +61,7 @@ void GetInputValues(float &start_x, float &start_y, float &end_x,
   std::cin >> end_x;
   std::cout << "Goal y: ";
   std::cin >> end_y;
-  // Check that the input is correct.
+  // Check that input is correct.
   CheckinputValues(start_x, start_y, end_x, end_y);
 }
 
@@ -94,8 +94,7 @@ int main(int argc, const char **argv) {
   // user input for these values using std::cin. Pass the user input to the
   // RoutePlanner object below in place of 10, 10, 90, 90.
   float start_x{0.f}, start_y{0.f}, end_x{0.f}, end_y{0.f};
-
-  GetInputValues(start_x, start_y, end_x, end_y);
+    GetInputValues(start_x.start_y,end_x,end_y
   // Build Model.
   RouteModel model{osm_data};
 

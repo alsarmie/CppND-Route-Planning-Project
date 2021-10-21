@@ -61,7 +61,7 @@ void GetInputValues(float &start_x, float &start_y, float &end_x,
   std::cin >> end_x;
   std::cout << "Goal y: ";
   std::cin >> end_y;
-  // Check that the input is correct.
+  // Check that input is correct.
   CheckinputValues(start_x, start_y, end_x, end_y);
 }
 

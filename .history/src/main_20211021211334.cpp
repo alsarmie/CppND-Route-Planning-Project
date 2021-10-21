@@ -1,13 +1,13 @@
 #include "render.h"
 #include "route_model.h"
 #include "route_planner.h"
-#include <assert.h>
 #include <fstream>
 #include <io2d.h>
 #include <iostream>
 #include <optional>
 #include <string>
 #include <vector>
+#include <assert.h>
 
 using namespace std::experimental;
 
@@ -26,31 +26,7 @@ static std::optional<std::vector<std::byte>> ReadFile(const std::string &path) {
     return std::nullopt;
   return std::move(contents);
 }
-
-void CheckinputValues(const float &start_x, const float &start_y,
-                      const float &end_x, const float &end_y) {
-  /* This function checks that the input coordinates provided by the user are
-   * acceptable */
-
-  assert((start_x >= 0 && start_x <= 100) &&
-         "The start X coordinate is not positive or out of range (>100)!");
-  assert((start_y >= 0 && start_y <= 100) &&
-         "The start Y coordinate is not positive or out of range (>100)!");
-  assert((end_x >= 0 && end_x <= 100) &&
-         "The goal X coordinate is not positive or out of range (>100)!");
-  assert((end_y >= 0 && end_y <= 100) &&
-         "The goal Y coordinate is not positive or out of range (>100)!");
-
-  std::cout << "Coordinates are acceptable, proceeding with route planning."
-            << std::endl;
-  std::cout << "Start coordinates (" << start_x << "," << start_y << ") "
-            << std::endl;
-  std::cout << "Goal coordinates (" << end_x << "," << end_y << ") "
-            << std::endl;
-}
-
-void GetInputValues(float &start_x, float &start_y, float &end_x,
-                    float &end_y) {
+void GetInputValues(float &start_x, float & start_y,  float & end_x,  float &end_y){
 
   std::cout << "Please specify the start and goal coordinates:" << std::endl;
   std::cout << "Start x: ";
@@ -61,8 +37,12 @@ void GetInputValues(float &start_x, float &start_y, float &end_x,
   std::cin >> end_x;
   std::cout << "Goal y: ";
   std::cin >> end_y;
-  // Check that the input is correct.
-  CheckinputValues(start_x, start_y, end_x, end_y);
+
+
+}
+void CheckinputValues(const float &start_x,const float & start_y, const float & end_x, const float &end_y){
+/* This function checks that the input coordinates provided by the user are acceptable */
+
 }
 
 int main(int argc, const char **argv) {
@@ -93,9 +73,20 @@ int main(int argc, const char **argv) {
   // TODO 1: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
   // user input for these values using std::cin. Pass the user input to the
   // RoutePlanner object below in place of 10, 10, 90, 90.
-  float start_x{0.f}, start_y{0.f}, end_x{0.f}, end_y{0.f};
 
-  GetInputValues(start_x, start_y, end_x, end_y);
+  float start_x, start_y, end_x, end_y;
+
+  
+  // Check that input is correct.
+  if ((start_x >= 0 && start_x <= 100) && (start_y >= 0 && start_y <= 100) &&
+      (end_x >= 0 && end_x <= 100) && (end_y >= 0 && end_y <= 100))
+    std::cout << "Coordinates are acceptable, proceeding with route planning."
+              << std::endl;
+  std::cout << "Start coordinates (" << start_x << "," << start_y << ") "
+            << std::endl;
+  std::cout << "Goal coordinates (" << end_x << "," << end_y << ") "
+            << std::endl;
+
   // Build Model.
   RouteModel model{osm_data};
 
