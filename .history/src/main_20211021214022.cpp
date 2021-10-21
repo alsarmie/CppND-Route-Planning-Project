@@ -41,7 +41,7 @@ void CheckinputValues(const float &start_x, const float &start_y,
   assert((end_y >= 0 && end_y <= 100) &&
          "The goal Y coordinate is not positive or out of range (>100)!");
 
-  std::cout << "Coordinates are acceptable, proceeding with route planning :-)."
+  std::cout << "Coordinates are acceptable, proceeding with route planning :."
             << std::endl;
   std::cout << "Start coordinates (" << start_x << "," << start_y << ") "
             << std::endl;
