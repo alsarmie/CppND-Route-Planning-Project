@@ -4,7 +4,7 @@
         "name": "(gdb) Launch",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceRoot}/build/OSM_A_star_search",
+        "program": "${workspaceRoot}/build/test", //OSM_A_star_search
         "args": [],
         "stopAtEntry": false,
         "cwd": "${workspaceRoot}/build",
