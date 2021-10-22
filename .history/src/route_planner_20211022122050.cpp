@@ -50,9 +50,8 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
   // Populate neighbors of current node
   current_node->FindNeighbors();
   for (RouteModel::Node *neighbor : current_node->neighbors) {
-    // Only check for nodes that are not visited, this is to avoid adding the start node for example.
+    // Set parent of each neighbor node to the current node
     if (!neighbor->visited) {
-        // Set parent of each neighbor node to the current node
       neighbor->parent = current_node;
       neighbor->h_value = RoutePlanner::CalculateHValue(neighbor);
       neighbor->g_value =
