@@ -15,8 +15,8 @@ RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y,
   // TODO 2: Use the m_Model.FindClosestNode method to find the closest nodes to
   // the starting and ending coordinates. Store the nodes you find in the
   // RoutePlanner's start_node and end_node attributes.
-  start_node = &(m_Model.FindClosestNode(start_x, start_y));
-  end_node = &(m_Model.FindClosestNode(end_x, end_y));
+  start_node = &(m_Model.FindClosestNode(start_x, start_y);
+  end_node = &m_Model.FindClosestNode(end_x, end_y);
   cout << "Closest existing node coordinates to the starting coordinate "
           "provided are ("
        << start_node->x / 0.01 << " , " << start_node->y / 0.01 << ")" << endl;
@@ -49,11 +49,10 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 
   // Populate neighbors of current node
   current_node->FindNeighbors();
-  for (RouteModel::Node *&neighbor : current_node->neighbors) {
-    // Only check for nodes that are not visited, this is to avoid adding the
-    // start node for example.
+  for (RouteModel::Node *neighbor : current_node->neighbors) {
+    // Only check for nodes that are not visited, this is to avoid adding the start node for example.
     if (!neighbor->visited) {
-      // Set parent of each neighbor node to the current node
+        // Set parent of each neighbor node to the current node
       neighbor->parent = current_node;
       neighbor->h_value = RoutePlanner::CalculateHValue(neighbor);
       neighbor->g_value =
@@ -138,7 +137,7 @@ void RoutePlanner::AStarSearch() {
   while (!open_list.empty()) {
     // Sort the open list and retrieve the lowest f value node.
     current_node = RoutePlanner::NextNode();
-    if ((current_node->x == end_node->x) && (current_node->y == end_node->y)) {
+    if (current_node == end_node) {
       // We found the goal node
       m_Model.path = ConstructFinalPath(current_node);
       break;

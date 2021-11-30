@@ -49,11 +49,10 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 
   // Populate neighbors of current node
   current_node->FindNeighbors();
-  for (RouteModel::Node *&neighbor : current_node->neighbors) {
-    // Only check for nodes that are not visited, this is to avoid adding the
-    // start node for example.
+  for (RouteModel::Node *neighbor : current_node->neighbors) {
+    // Only check for nodes that are not visited, this is to avoid adding the start node for example.
     if (!neighbor->visited) {
-      // Set parent of each neighbor node to the current node
+        // Set parent of each neighbor node to the current node
       neighbor->parent = current_node;
       neighbor->h_value = RoutePlanner::CalculateHValue(neighbor);
       neighbor->g_value =
@@ -138,7 +137,7 @@ void RoutePlanner::AStarSearch() {
   while (!open_list.empty()) {
     // Sort the open list and retrieve the lowest f value node.
     current_node = RoutePlanner::NextNode();
-    if ((current_node->x == end_node->x) && (current_node->y == end_node->y)) {
+    if (current_node == end_node) {
       // We found the goal node
       m_Model.path = ConstructFinalPath(current_node);
       break;

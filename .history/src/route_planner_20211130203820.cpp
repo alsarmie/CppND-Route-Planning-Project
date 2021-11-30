@@ -138,7 +138,7 @@ void RoutePlanner::AStarSearch() {
   while (!open_list.empty()) {
     // Sort the open list and retrieve the lowest f value node.
     current_node = RoutePlanner::NextNode();
-    if ((current_node->x == end_node->x) && (current_node->y == end_node->y)) {
+    if (current_node.x == end_node) {
       // We found the goal node
       m_Model.path = ConstructFinalPath(current_node);
       break;
